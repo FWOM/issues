@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<h3>List of Issues</h3>
+<ul>
+  <% unless @project.issues.any? %>
+      <strong> No issues.. </strong>
+  <% end %>
+  <%- @project.issues.each do |issue| %>
+      <li>
+        <%= link_to issue.title, issue %>
+        <strong> : </strong>
+        <%= issue.description %>
+      </li>
+  <%- end -%>
+</ul>
+
+
+<%= link_to 'Edit', edit_project_path(@project), :class => "button round" %>
+<%= link_to 'Back', projects_path, :class => "button round" %>
+<%= link_to 'Novo Bilhete', new_issue_path(:project_id => @project.id), :class => "button round" %>

@@ -1,0 +1,4 @@
+<%= label="Title" %>;<%= label="Description" %>;<%= label="Created at" %>
+<% @issues.each do |issue| %>
+    <%= issue.title %>;<%= issue.description %>;<%= issue.created_at.to_date %>
+<% end %>

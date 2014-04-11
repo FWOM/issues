@@ -1,0 +1,12 @@
+<%= form_tag issues_path, method: :get  do  %>
+    <strong>Search:</strong>
+    <%= text_field_tag :title ,nil, size: 21, placeholder: "Issue title..." %>
+    <strong>Followers:</strong>
+    <%= number_field_tag :no_followers, min: 0, max: 99 %>
+    </br>
+<strong>Date:</strong>
+    <%= date_select :created_at_start, order: [:day, :month, :year]%>
+    &rarr;
+    <%= date_select :created_at_end, order: [:day, :month, :year]%>
+    <%= submit_tag "Pesquisar", :name => nil %>
+<%- end %>

@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: timelines
+#
+#  id                :integer          not null, primary key
+#  content           :string(255)
+#  timelineable_type :string(255)
+#  timelineable_id   :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyString
+  timelineable_type: MyString
+  timelineable_id: 1
+
+two:
+  content: MyString
+  timelineable_type: MyString
+  timelineable_id: 1

@@ -1,0 +1,20 @@
+<%= javascript_tag do %>
+    function drawVisualization() {
+    // Create and populate the data table.
+    var data = google.visualization.arrayToDataTable([
+    ['Name',                                                            'Manager', 'Tooltip'],
+    [{v: 'Thiago Lins', f: '<%= 'Thiago Lins' %><br/><font color="red"><i>President<i></font>'},                                                             null,      'The President'],
+    [{v: 'Felipe', f: 'Felipe<br/><font color="red"><i>Vice President<i></font>'}, 'Thiago Lins',    null],
+    ['Rivan',                                                       'Thiago Lins', null],
+    ['Victor',                                                            'Rivan', null],
+    ['Romeuzin',                                                          'Rivan', null]
+    ]);
+
+    // Create and draw the visualization.
+    new google.visualization.OrgChart(document.getElementById('visualization')).
+    draw(data, {allowHtml: true});
+    }
+
+
+    google.setOnLoadCallback(drawVisualization);
+<% end %>

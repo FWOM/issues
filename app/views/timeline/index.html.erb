@@ -1,0 +1,19 @@
+<h1>Timeline</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Content</th>
+    <th>Timelineable</th>
+    <th>Created</th>
+  </tr>
+  </thead>
+  <tbody>
+      <%- @timelines.each do |timeline| %>
+        <tr>
+          <td><%= timeline.content %></td>
+          <td><%= link_to timeline.timelineable_type, timeline.timelineable, :class => "timeline_button round"%></td>
+          <td><%= time_ago_in_words timeline.created_at %></td>
+        </tr>
+      <%- end %>
+  </tbody>
+</table>

@@ -1,0 +1,56 @@
+- content_for :nav do
+  = render "search"
+
+%h1
+  = t "nav.issues.list"
+
+%table
+  %thead
+    %tr
+      %th
+        Id
+        = link_to "⇅", issues_path(sort: "id"), title:'Sort'
+      %th
+        Title
+        = link_to "⇅", issues_path(sort: "title"), title:'Sort'
+      %th
+        Tags
+        = link_to "⇅", issues_path(sort: "tags"), title:'Sort'
+      %th
+        Project
+        = link_to "⇅", issues_path(sort:"project_id"), title:'Sort'
+      %th
+        Description
+        = link_to "⇅", issues_path(sort: "description"), title:'Sort'
+      %th
+        No followers
+        = link_to "⇅", issues_path(sort: "no_followers"), title:'Sort'
+      %th
+        Created
+        = link_to "⇅", issues_path(sort: "created_at"), title:'Sort'
+      %th
+        Updated
+        = link_to "⇅", issues_path(sort: "updated_at"), title:'Sort'
+
+  %tbody
+    - @issues.each do |issue|
+      %tr>
+        %td= issue.id
+        %td= issue.title
+        %td= issue.tags
+        %td= issue.project.name
+        %td= issue.description
+        %td= issue.no_followers
+        %td= issue.created_at.strftime("%d, %b %Y - %H:%M:%S")
+        %td= issue.updated_at.strftime("%d, %b %Y - %H:%M:%S")
+        %td= button_to 'Show', issue
+        %td= button_to 'Edit', edit_issue_path(issue)
+        %td= button_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' }
+
+
+
+
+
+%br
+
+= button_to 'Novo Bilhete', new_issue_path

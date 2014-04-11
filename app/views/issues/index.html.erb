@@ -1,0 +1,41 @@
+<%- content_for :nav do %>
+    <%= render "search" %>
+<%- end %>
+
+<h1><%= t "nav.issues.list"%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id <%= link_to "⇅", issues_path(sort: "id"), title:'Sort'%> </th>
+      <th>Title <%= link_to "⇅", issues_path(sort: "title"), title:'Sort'%></th>
+      <th> Tags <%= link_to "⇅", issues_path(sort: "tags"), title:'Sort'%></th>
+      <th>Project <%= link_to "⇅", issues_path(sort:"project_id"), title:'Sort'%></th>
+      <th>Description <%= link_to "⇅", issues_path(sort: "description"), title:'Sort'%></th>
+      <th>No followers <%= link_to "⇅", issues_path(sort: "no_followers"), title:'Sort'%></th>
+      <th>Created <%= link_to "⇅", issues_path(sort: "created_at"), title:'Sort'%></th>
+      <th>Updated <%= link_to "⇅", issues_path(sort: "updated_at"), title:'Sort'%></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td><%= issue.id %></td>
+        <td><%= issue.title %></td>
+        <td><%= issue.tags %></td>
+        <td><%= issue.project.name %></td>
+        <td><%= issue.description %></td>
+        <td><%= issue.no_followers %></td>
+        <td><%= issue.created_at.strftime("%d, %b %Y - %H:%M:%S") %></td>
+        <td><%= issue.updated_at.strftime("%d, %b %Y - %H:%M:%S") %></td>
+        <td><%= link_to 'Show', issue %></td>
+        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "Novo Bilhete", new_issue_path, :class => "button round" %>

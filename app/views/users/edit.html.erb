@@ -1,0 +1,11 @@
+<h1><%= @title %></h1>
+<%= form_for @user do |f| %>
+    <div class="field">
+      <%= gravatar_for @user %>
+      <%= link_to 'Change', 'http://gravatar.com/emails', :target => "_blank" %>
+    </div>
+    <%= render 'fields', :f => f %>
+    <div class="actions">
+      <%= f.submit 'Update' ,:class => 'button round' %>
+    </div>
+<% end %>

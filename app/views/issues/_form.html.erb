@@ -1,0 +1,38 @@
+<%= form_for(@issue) do |f| %>
+  <% if @issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+      <% @issue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br>
+    <%= f.text_field :tags %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :no_followers %><br>
+    <%= f.number_field :no_followers, min: 0 %>
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%# <%= f.collection_select :other_model_id_in_this_model, OtherModel.all, :other_model_id, :other_model_full_name %>
+    <%= f.collection_select :project_id, Project.all, :id, :name  %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Save', :class => 'button round' %>
+  </div>
+<% end %>
